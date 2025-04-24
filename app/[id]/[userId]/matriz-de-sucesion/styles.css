@@ -1,0 +1,938 @@
+/* Matrix Succession Styles */
+.matriz-sucesion-container {
+    width: 100%;
+    /* max-width: 1200px; */
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    font-weight: normal;
+}
+
+.matrix-content {
+    display: flex;
+    gap: 20px;
+    min-height: 100%;
+}
+
+.left-column {
+    flex: 0 0 73%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure alignment between bottom cards */
+.development-card {
+    flex: 1;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.replacement-card {
+    flex: 1;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-succession-row {
+    display: flex;
+    gap: 20px;
+}
+
+.section-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-header {
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 0 5px;
+}
+
+/* Profile Card */
+.profile-card {
+    background: white;
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    position: relative;
+    flex: 1;
+    margin-top: 120px;
+}
+
+.profile-photo-wrapper {
+    position: relative;
+    margin-top: -125px;
+    margin-bottom: 15px;
+}
+
+.profile-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    margin: 5px 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.position-name {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.profile-buttons {
+    display: flex;
+    /* gap: 10px; */
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+/* Succession Card */
+.succession-card {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    /* Increased padding */
+    border: 1px solid #ddd;
+    flex: 1;
+}
+
+.succession-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 15px;
+    /* Added padding for better spacing */
+}
+
+.succession-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    /* Increased vertical padding */
+}
+
+.position-name {
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+/* Development Card */
+.development-card {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    border: 1px solid #ddd;
+}
+
+.development-sections {
+    display: flex;
+    justify-content: space-between;
+}
+
+.development-section {
+    flex: 1;
+    padding: 0 20px;
+    position: relative;
+}
+
+.development-section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #eee;
+}
+
+.development-section:first-child {
+    padding-left: 0;
+}
+
+.development-section:last-child {
+    padding-right: 0;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 20px;
+}
+
+.detail-item {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Replacement Card */
+.replacement-card {
+    background: white;
+    border-radius: 25px;
+    padding: 30px 15px;
+    /* Increased padding */
+    height: 100%;
+    border: 1px solid #ddd;
+}
+
+.replacement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* Increased gap between items */
+    padding: 10px 10px;
+    /* Added padding for better spacing */
+}
+
+.replacement-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 25px;
+    /* Increased bottom padding */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.replacement-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.replacement-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* width: 120px; */
+    /* Increased width for more space */
+}
+
+.replacement-name {
+    font-weight: normal;
+    font-size: 14px;
+    max-width: 110px;
+    /* Increased max-width */
+    word-wrap: break-word;
+}
+
+.replacement-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Increased gap */
+    align-items: flex-end;
+}
+
+/* Button styles */
+.btn {
+    border: none;
+    border-radius: 20px;
+    padding: 20px 30px;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    /* Enhanced shadow */
+    min-width: 150px;
+    /* Increased minimum width */
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    /* Slight lift effect */
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+    /* Enhanced shadow on hover */
+    filter: brightness(1.05);
+    /* Slightly brighter on hover */
+}
+
+.btn-user:hover {
+    transform: translateY(-2px);
+    /* Slight lift effect */
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+    /* Enhanced shadow on hover */
+    filter: brightness(1.05);
+    /* Slightly brighter on hover */
+}
+
+.btn-user {
+    border: none;
+    border-radius: 20px;
+    padding: 20px 30px;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    width: 30%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+}
+
+.btn-gray {
+    background: #888;
+    color: white;
+}
+
+.btn-gray:hover {
+    background: #777;
+    /* Darker gray on hover */
+}
+
+.btn-app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 150px; */
+    /* Fixed width for consistent sizing */
+}
+
+.btn-app:hover {
+    opacity: 0.9;
+    /* Slightly transparent on hover */
+}
+
+/* APP badges */
+.app-badge {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: normal;
+    text-align: center;
+    min-width: 150px;
+    /* Match button width */
+    font-size: 14px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    /* Enhanced shadow */
+}
+
+/* No data message */
+.no-data {
+    color: #888;
+    font-style: italic;
+    /* padding: 15px 0; */
+    /* Added padding */
+    /* text-align: center; */
+    /* Centered text */
+}
+
+/* Error state */
+.app-error {
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 500px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    /* Centrado vertical y horizontal */
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.app-retry-button {
+    background: #50A31F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+.app-retry-button:hover {
+    background: #438618;
+}
+
+/* Skeleton loader container */
+.skeleton_container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* Skeleton loading styles */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0.2) 20%,
+            rgba(255, 255, 255, 0.5) 60%,
+            rgba(255, 255, 255, 0));
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.skeleton-text {
+    height: 14px;
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    width: 80%;
+}
+
+.skeleton-button {
+    height: 38px;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    width: 30%;
+}
+
+.skeleton-circle {
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+/* Adjust specific component skeleton styles */
+.profile-card.skeleton .profile-name.skeleton-text {
+    height: 20px;
+    width: 70%;
+    margin: 20px 0;
+}
+
+.section-container-skeleton {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-photo-wrapper-skeleton {
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.profile-photo-skeleton {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -125px;
+    border: 1px solid white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card.skeleton .profile-buttons .skeleton-button {
+    width: 30%;
+}
+
+.succession-item .skeleton-text {
+    width: 60%;
+}
+
+.succession-item .skeleton-button {
+    width: 35%;
+}
+
+.development-section .skeleton-text {
+    width: 90%;
+}
+
+.replacement-item .replacement-actions .skeleton-button {
+    width: 150px;
+}
+
+.replacement-item .replacement-name.skeleton-text {
+    width: 100px;
+    height: 16px;
+    margin-top: 8px;
+}
+
+/* Responsive layout */
+@media (max-width: 1100px) {
+    .matrix-content {
+        flex-direction: column;
+    }
+
+    .left-column,
+    .right-column {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-succession-row {
+        flex-direction: column;
+    }
+
+    .profile-card,
+    .succession-card {
+        flex: 1 1 100%;
+    }
+
+    .profile-card {
+        margin-top: 50px;
+    }
+
+    .profile-photo-wrapper {
+        margin-top: -80px;
+    }
+
+    .profile-photo {
+        width: 140px;
+        height: 140px;
+    }
+
+    .development-sections {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .development-section:not(:last-child)::after {
+        content: none;
+    }
+
+    .development-section {
+        padding: 0;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+    }
+
+    .development-section:last-child {
+        border-bottom: none;
+    }
+
+    .replacement-item {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+}
+
+/* Tiptap Editor Styles */
+.tiptap-editor-container {
+    margin-top: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tiptap-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f5f5f5;
+    gap: 2px;
+    align-items: center;
+}
+
+.tiptap-secondary-toolbar {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tiptap-toolbar-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tiptap-toolbar-button:hover {
+    background-color: #e6e6e6;
+    border-color: #d0d0d0;
+}
+
+.tiptap-toolbar-button.is-active {
+    background-color: #e8f4fd;
+    border-color: #a8d4f5;
+    color: #0078d4;
+}
+
+.tiptap-toolbar-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tiptap-button-group {
+    display: flex;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 4px;
+}
+
+.tiptap-button-group .tiptap-toolbar-button {
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid #d0d0d0;
+}
+
+.tiptap-button-group .tiptap-toolbar-button:last-child {
+    border-right: none;
+}
+
+.tiptap-button-restore {
+    display: flex;
+    border: none;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tiptap-toolbar-restore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #ff8a00, #ffbb00);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tiptap-toolbar-restore:hover {
+    background: linear-gradient(135deg, #ff7600, #ffb700);
+    /* transform: translateY(-1px); */
+    box-shadow: 0 4px 8px rgba(255, 138, 0, 0.3);
+}
+
+.tiptap-toolbar-restore:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 3px rgba(255, 138, 0, 0.3);
+}
+
+.tiptap-button-restore .tiptap-toolbar-restore {
+    border-radius: 4px;
+    border: none;
+}
+
+/* Add a subtle glow effect on hover */
+.tiptap-button-restore:hover {
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.5);
+}
+
+/* Style the icon to match the button */
+.tiptap-toolbar-restore svg {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+    margin-right: 5px;
+}
+
+/* Dropdown menu */
+.tiptap-dropdown {
+    position: relative;
+    margin-right: 4px;
+}
+
+.tiptap-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    padding: 0 8px;
+    height: 28px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tiptap-dropdown-trigger .caret-down {
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+.tiptap-format-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    display: none;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    background-color: white;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.tiptap-dropdown:hover .tiptap-format-dropdown {
+    display: block;
+}
+
+.tiptap-dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    clear: both;
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.tiptap-dropdown-item:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.tiptap-dropdown-item.is-active {
+    background-color: #e8f4fd;
+    color: #0078d4;
+}
+
+.tiptap-dropdown-divider {
+    height: 1px;
+    margin: 4px 0;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    border: none;
+}
+
+/* Editor content area */
+.tiptap-editor {
+    padding: 16px;
+    min-height: 200px;
+    outline: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: white;
+}
+
+/* Tiptap Content Styling */
+.tiptap-editor ul {
+    padding-left: 1.5em;
+    list-style-type: disc;
+}
+
+.tiptap-editor ol {
+    padding-left: 1.5em;
+    list-style-type: decimal;
+}
+
+.tiptap-editor p {
+    margin-bottom: 1em;
+}
+
+.tiptap-editor h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.tiptap-editor h2 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.tiptap-editor h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.tiptap-editor strong {
+    font-weight: bold;
+}
+
+.tiptap-editor em {
+    font-style: italic;
+}
+
+.tiptap-editor u {
+    text-decoration: underline;
+}
+
+.tiptap-editor blockquote {
+    border-left: 3px solid #ddd;
+    padding-left: 1em;
+    margin-left: 0;
+    color: #666;
+}
+
+.tiptap-editor code {
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+}
+
+.tiptap-editor pre {
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    padding: 0.7em 1em;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    overflow-x: auto;
+}
+
+.tiptap-editor a {
+    color: #0078d4;
+    text-decoration: underline;
+}
+
+/* Table styling */
+.tiptap-editor table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+.tiptap-editor th {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+.tiptap-editor th,
+.tiptap-editor td {
+    border: 2px solid #ddd;
+    padding: 8px;
+    position: relative;
+    vertical-align: top;
+}
+
+.tiptap-editor .selectedCell {
+    background-color: #e8f4fd;
+}
+
+/* Editable components */
+.app-editable-content {
+    position: relative;
+    min-height: 40px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.app-editable-content:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.app-edit-icon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    opacity: 0;
+    color: #3182ce;
+    transition: opacity 0.2s;
+}
+
+.app-editable-content:hover .app-edit-icon,
+.app-editable-number:hover .app-edit-icon {
+    opacity: 1;
+}
+
+.strength-content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.edit-button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: #3182ce;
+    transition: opacity 0.2s;
+    align-items: center;
+    background-color: #FFF;
+    padding: 7px 10px 4px 10px;
+    border-radius: 10px;
+}

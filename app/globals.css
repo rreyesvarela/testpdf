@@ -1,0 +1,650 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.background {
+  background-image: url('/images/inicio_portada.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+
+.iconMenu {
+  margin-left: 15px;
+  cursor: pointer;
+  color: blue;
+  fill: blue
+}
+
+.app-graph-image {
+  width: 112px;
+  height: auto;
+}
+
+.bullet {
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* Tiptap Editor Styles */
+.tiptap-editor-container {
+  margin-top: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tiptap-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+  gap: 2px;
+  align-items: center;
+}
+
+.tiptap-secondary-toolbar {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tiptap-toolbar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tiptap-toolbar-button:hover {
+  background-color: #e6e6e6;
+  border-color: #d0d0d0;
+}
+
+.tiptap-toolbar-button.is-active {
+  background-color: #e8f4fd;
+  border-color: #a8d4f5;
+  color: #0078d4;
+}
+
+.tiptap-toolbar-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tiptap-button-group {
+  display: flex;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 4px;
+}
+
+.tiptap-button-group .tiptap-toolbar-button {
+  border-radius: 0;
+  border: none;
+  border-right: 1px solid #d0d0d0;
+}
+
+.tiptap-button-group .tiptap-toolbar-button:last-child {
+  border-right: none;
+}
+
+.tiptap-button-restore {
+  display: flex;
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tiptap-toolbar-restore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #ff8a00, #ffbb00);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tiptap-toolbar-restore:hover {
+  background: linear-gradient(135deg, #ff7600, #ffb700);
+  /* transform: translateY(-1px); */
+  box-shadow: 0 4px 8px rgba(255, 138, 0, 0.3);
+}
+
+.tiptap-toolbar-restore:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 3px rgba(255, 138, 0, 0.3);
+}
+
+.tiptap-button-restore .tiptap-toolbar-restore {
+  border-radius: 4px;
+  border: none;
+}
+
+/* Add a subtle glow effect on hover */
+.tiptap-button-restore:hover {
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.5);
+}
+
+/* Style the icon to match the button */
+.tiptap-toolbar-restore svg {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+  margin-right: 5px;
+}
+
+/* Dropdown menu */
+.tiptap-dropdown {
+  position: relative;
+  margin-right: 4px;
+}
+
+.tiptap-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 0 8px;
+  height: 28px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.tiptap-dropdown-trigger .caret-down {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.tiptap-format-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  display: none;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  background-color: white;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.tiptap-dropdown:hover .tiptap-format-dropdown {
+  display: block;
+}
+
+.tiptap-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  clear: both;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.tiptap-dropdown-item:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.tiptap-dropdown-item.is-active {
+  background-color: #e8f4fd;
+  color: #0078d4;
+}
+
+.tiptap-dropdown-divider {
+  height: 1px;
+  margin: 4px 0;
+  overflow: hidden;
+  background-color: #e0e0e0;
+  border: none;
+}
+
+/* Editor content area */
+.tiptap-editor {
+  padding: 16px;
+  min-height: 200px;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: white;
+}
+
+/* Tiptap Content Styling */
+.tiptap-editor ul {
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+
+.tiptap-editor ol {
+  padding-left: 1.5em;
+  list-style-type: decimal;
+}
+
+.tiptap-editor p {
+  margin-bottom: 1em;
+}
+
+.tiptap-editor h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.tiptap-editor h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.tiptap-editor h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.tiptap-editor strong {
+  font-weight: bold;
+}
+
+.tiptap-editor em {
+  font-style: italic;
+}
+
+.tiptap-editor u {
+  text-decoration: underline;
+}
+
+.tiptap-editor blockquote {
+  border-left: 3px solid #ddd;
+  padding-left: 1em;
+  margin-left: 0;
+  color: #666;
+}
+
+.tiptap-editor code {
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+}
+
+.tiptap-editor pre {
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  padding: 0.7em 1em;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  overflow-x: auto;
+}
+
+.tiptap-editor a {
+  color: #0078d4;
+  text-decoration: underline;
+}
+
+/* Table styling */
+.tiptap-editor table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin-bottom: 1em;
+  overflow: hidden;
+}
+
+.tiptap-editor th {
+  font-weight: bold;
+  background-color: #f5f5f5;
+}
+
+.tiptap-editor th,
+.tiptap-editor td {
+  border: 2px solid #ddd;
+  padding: 8px;
+  position: relative;
+  vertical-align: top;
+}
+
+.tiptap-editor .selectedCell {
+  background-color: #e8f4fd;
+}
+
+
+/* Editable components */
+.app-editable-content {
+  position: relative;
+  min-height: 40px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.app-editable-content:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.app-edit-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  opacity: 0;
+  color: #3182ce;
+  transition: opacity 0.2s;
+}
+
+.app-editable-content:hover .app-edit-icon,
+.app-editable-number:hover .app-edit-icon {
+  opacity: 1;
+}
+
+/* In your CSS file */
+.app-editable-content p {
+  margin: 0.5em 0;
+  /* Adjust as needed */
+}
+
+.app-editable-content p:empty {
+  min-height: 1em;
+  /* Create space for empty paragraphs */
+  display: block;
+}
+
+.app-editable-number {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  position: relative;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+
+.app-editable-number:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.app-editable-number-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-editable-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.app-save-btn {
+  background-color: #4caf50 !important;
+  color: white !important;
+  font-size: 5px !important;
+  text-transform: none !important;
+  min-width: 5px !important;
+}
+
+.app-save-btn:hover {
+  background-color: #39853c !important;
+}
+
+.app-cancel-btn {
+  background-color: #f44336 !important;
+  color: white !important;
+  font-size: 5px !important;
+  text-transform: none !important;
+  min-width: 5px !important;
+}
+
+.app-cancel-btn:hover {
+  background-color: #bc342b !important;
+}
+
+/* Add these styles to your styles.css file */
+
+
+.talent-card-container {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+/* Secciones */
+.section {
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.section-title {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+}
+
+.title-text {
+  color: #e85c13;
+  font-weight: bold;
+}
+
+.dot-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #e85c13;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.section-content {
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1;
+  padding: 10px;
+  min-width: 300px;
+}
+
+/* Subsecciones */
+.subsection {
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  height: 100%;
+}
+
+.subsection-header {
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: bold;
+}
+
+.subsection-content {
+  padding: 0;
+  min-height: 120px;
+}
+
+/* Tablas de trayectoria */
+.trajectory-table {
+  width: 100%;
+}
+
+.table-header {
+  display: flex;
+  background-color: #f2f2f2;
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header-cell {
+  padding: 10px;
+  text-align: left;
+}
+
+.fecha-final {
+  flex: 1;
+}
+
+.empresa,
+.puesto {
+  flex: 2;
+}
+
+.fecha-inicial {
+  flex: 1;
+  text-align: right;
+}
+
+.table-body {
+  min-height: 100px;
+}
+
+/* Botones de acción */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  background-color: #999;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.btn-save {
+  background-color: #e85c13;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.btn-cancel:hover {
+  background-color: #777;
+}
+
+.btn-save:hover {
+  background-color: #d65000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .col {
+    width: 100%;
+  }
+}
+
+.replacement-photo-container {
+  width: 80px;
+  /* Increased size */
+  height: 80px;
+  /* Increased size */
+  border-radius: 50%;
+  overflow: hidden;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  /* Increased margin */
+}
+
+.replacement-photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

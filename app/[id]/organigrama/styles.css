@@ -1,0 +1,261 @@
+.organigrama_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    padding-top: 30px;
+    font-family: Arial, sans-serif;
+    position: relative;
+    /* Added for absolute positioning of legend */
+}
+
+/* New styles for the legend */
+.organigrama_legend {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 12px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.organigrama_legend_item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.organigrama_legend_indicator {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #bb3d01;
+    border-radius: 2px;
+    margin-right: 8px;
+}
+
+.organigrama_top_level {
+    margin-bottom: 30px;
+}
+
+.organigrama_card_boss {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    width: 260px;
+    height: 160px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    /* cursor: pointer; */
+}
+
+/* .organigrama_card_boss:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+} */
+
+.organigrama_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 260px;
+    height: 160px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.organigrama_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.organigrama_divider {
+    width: 80%;
+    height: 1px;
+    background-color: #ddd;
+    margin: 5px auto;
+}
+
+.organigrama_highlighted {
+    border: 2px solid #bb3d01;
+}
+
+.organigrama_photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.organigrama_photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.organigrama_info {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.organigrama_name {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.organigrama_position {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.2;
+}
+
+.organigrama_central_line {
+    width: 2px;
+    height: 25px;
+    background-color: #ccc;
+}
+
+.organigrama_horizontal_line {
+    width: 90%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 0 0 8px 0;
+}
+
+.organigrama_vertical_line {
+    width: 2px;
+    height: 15px;
+    background-color: #ccc;
+    margin-bottom: 8px;
+}
+
+.organigrama_employee_row {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+/* First row should be closer to the boss */
+.organigrama_employee_row.row-0 {
+    margin-top: -60px;
+}
+
+.organigrama_column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .organigrama_card {
+        width: 200px;
+    }
+
+    .organigrama_employee_row {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 991px) {
+    .organigrama_card {
+        width: 170px;
+        height: 130px;
+        padding: 8px;
+    }
+
+    .organigrama_name {
+        font-size: 11px;
+    }
+
+    .organigrama_position {
+        font-size: 9px;
+    }
+
+    .organigrama_photo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .organigrama_card_boss {
+        margin-top: 40px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .organigrama_employee_row {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .organigrama_column {
+        margin-bottom: 15px;
+    }
+
+    .organigrama_card_boss {
+        margin-top: 40px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .organigrama_wrapper {
+        padding: 10px;
+    }
+
+    .organigrama_employee_row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .organigrama_card_boss {
+        margin-top: 20px;
+    }
+
+    .organigrama_card_boss {
+        margin-bottom: 100px;
+    }
+
+    .organigrama_card {
+        width: 190px;
+        height: 140px;
+    }
+
+    .organigrama_horizontal_line {
+        width: 95%;
+    }
+
+    .organigrama_legend {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .organigrama_legend_item {
+        justify-content: center;
+    }
+}

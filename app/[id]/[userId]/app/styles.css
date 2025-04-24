@@ -1,0 +1,278 @@
+/* styles.css */
+
+/* Main container */
+.app-container {
+    width: 100%;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.app-position-title {
+    font-size: 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+}
+
+.skeleton_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.app-table-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    overflow-x: auto;
+    border-radius: 6px;
+}
+
+/* Table styles */
+.app-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Header row */
+.app-header-row {
+    background-color: #ff5722;
+    color: white;
+}
+
+.app-header-cell {
+    padding: 10px 16px;
+    text-align: center;
+    font-weight: 500;
+    border-right: 1px solid white;
+}
+
+.app-header-cell:last-child {
+    border-right: none;
+}
+
+/* Data rows */
+.app-data-row {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.app-pond-cell {
+    padding: 16px 8px;
+    border-right: 1px solid #e2e8f0;
+    vertical-align: middle;
+    text-align: center;
+    width: 70px;
+}
+
+.app-factor-cell {
+    padding: 8px;
+    border-right: 1px solid #e2e8f0;
+    width: 46%;
+}
+
+.app-transparent-cell {
+    background-color: #f5f5f5;
+}
+
+.app-comments-cell {
+    padding: 16px;
+    border-right: 1px solid #e2e8f0;
+    vertical-align: top;
+    position: relative;
+}
+
+.app-score-cell {
+    padding: 16px;
+    border-right: 1px solid #e2e8f0;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    width: 70px;
+}
+
+.app-score-cell:last-child {
+    border-right: none;
+}
+
+/* Input styles */
+.app-input {
+    width: 100%;
+    max-width: 64px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    padding: 4px;
+    text-align: center;
+}
+
+/* Factor header */
+.app-factor-header {
+    background-color: #e2e8f0;
+    padding: 8px 4px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.app-factor-header-grid {
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 4px;
+}
+
+.app-factor-header-left {
+    display: flex;
+    justify-content: center;
+    /* Center the graph horizontally */
+    width: 35%;
+}
+
+.app-factor-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center all content vertically */
+    width: 65%;
+    /* Give it a fixed relative width */
+}
+
+.app-factor-title {
+    font-weight: 600;
+}
+
+/* Graph containers */
+/* Modify the graphs container to better control alignment */
+.app-graphs-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 8px;
+}
+
+/* Create a dedicated container for Puesto graphs with center alignment */
+.app-puesto-graph {
+    display: flex;
+    justify-content: center;
+    /* Center the graph horizontally */
+    width: 35%;
+    /* Give it a fixed relative width */
+}
+
+/* Add a dedicated container for Persona graphs with center alignment */
+.app-persona-graphs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center all content vertically */
+    width: 61%;
+    /* Give it a fixed relative width */
+}
+
+/* Improve the grid for multiple graphs */
+.app-graphs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Center the graphs horizontally */
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.app-graph-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-graph-image {
+    width: 112px;
+    height: auto;
+}
+
+.app-graph-image-large {
+    width: 192px;
+    height: auto;
+}
+
+.app-graph-image-medium {
+    width: 128px;
+    height: auto;
+}
+
+.app-graph-label {
+    margin-top: 4px;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* Footer with subtotal and wonderlic */
+.app-footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    font-weight: 600;
+    border-top: 1px solid #e2e8f0;
+}
+
+.app-wonderlic {
+    font-weight: normal;
+    color: #555;
+}
+
+/* Subtotal */
+.app-subtotal-container {
+    display: flex;
+    padding: 8px;
+    font-weight: 600;
+}
+
+.app-subtotal-label {
+    margin-right: 8px;
+}
+
+/* Date */
+.app-date {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #555;
+    padding: 0 16px;
+}
+
+/* Error styles */
+.app-error {
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 500px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    /* Centrado vertical y horizontal */
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.app-retry-button {
+    background: #50A31F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+.app-retry-button:hover {
+    background: #438618;
+}

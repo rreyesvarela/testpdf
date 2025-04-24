@@ -1,0 +1,75 @@
+.directoresn3-menu_background {
+    background-image: url('/images/directores_portada.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: calc(100vh - 65px);
+    width: 100%;
+    background-color: #f2f2f2;
+}
+
+.directoresn3-menu_container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 7%;
+    align-items: right;
+    height: 100%;
+    padding-left: 100px;
+    gap: 40px;
+}
+
+.directoresn3-menu_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.directoresn3-data_container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.directoresn3-link_directores {
+    color: #000;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.directoresn3-link_directores:hover {
+    color: #782D30;
+}
+
+/* Error styles */
+.directoresn3-app-error {
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 500px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    /* Centrado vertical y horizontal */
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.directoresn3-app-retry-button {
+    background: #50A31F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+.directoresn3-app-retry-button:hover {
+    background: #438618;
+}
