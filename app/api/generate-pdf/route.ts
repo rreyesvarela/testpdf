@@ -784,11 +784,11 @@ async function generateAgendaPdf(
 
     if (process.env.NODE_ENV === 'production') {
       const puppeteerCore = await import('puppeteer-core');
-      const chromium = await import('@sparticuz/chrome-aws-lambda');
+      const chromium = await import('@sparticuz/chromium');
 
       browser = await puppeteerCore.default.launch({
         args: chromium.default.args,
-        executablePath: await chromium.default.executablePath,
+        executablePath: await chromium.default.executablePath(),
         headless: true,
         defaultViewport: {
           width: 2400,
@@ -1175,11 +1175,11 @@ export async function GET(request: NextRequest) {
     // Iniciar navegador con configuración optimizada
     if (process.env.NODE_ENV === 'production') {
       const puppeteerCore = await import('puppeteer-core');
-      const chromium = await import('@sparticuz/chrome-aws-lambda');
+      const chromium = await import('@sparticuz/chromium');
 
       browser = await puppeteerCore.default.launch({
         args: chromium.default.args,
-        executablePath: await chromium.default.executablePath,
+        executablePath: await chromium.default.executablePath(),
         headless: true,
         defaultViewport: {
           width: 2400,
