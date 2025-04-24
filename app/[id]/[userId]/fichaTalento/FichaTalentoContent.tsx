@@ -10,7 +10,6 @@ import { getDes, getHabilidad, getWonderlicStatus } from './utils';
 import { cuadrante, HoganAssessment, MGTData, TalendCard, TalentCardDetail } from './types';
 import { useRouter } from 'next/navigation';
 import Graficos from './graficos';
-import { set } from 'date-fns';
 
 interface FichaContentProps {
     isDialog: boolean;
@@ -63,9 +62,9 @@ const TalentProfileContent: React.FC<FichaContentProps> = ({ isDialog, dialogPro
 
     const { id } = useParams(); // Extract the dynamic route parameter [id]
     const ID = Array.isArray(id) ? id[0] : id || ''; // Handle the extracted parameter
-    let userId = isDialog ? dialogUserId : userIdAux;
-    let userName = isDialog ? dialogUserName : userNameAux;
-    let positionId = isDialog ? dialogPositionId : positionIdAux;
+    const userId = isDialog ? dialogUserId : userIdAux;
+    const userName = isDialog ? dialogUserName : userNameAux;
+    const positionId = isDialog ? dialogPositionId : positionIdAux;
 
     useEffect(() => {
         const fetchAllData = async () => {

@@ -8,7 +8,6 @@ import ReactMarkdown from 'react-markdown';
 import { decode } from 'html-entities';
 import { useParams } from 'next/navigation';
 import { ArrowLeft } from "lucide-react";
-import { is } from "date-fns/locale";
 
 export default function AnalisisPuestoVsPersonaPage() {
 

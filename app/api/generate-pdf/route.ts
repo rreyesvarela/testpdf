@@ -216,13 +216,13 @@ class PagePool {
             window.stop();
             // Limpiar memoria
             if (window.gc) window.gc();
-          } catch (e) {
+          } catch {
             // Ignorar errores
           }
         }).catch(() => {});
         
         this.availablePages.push(page);
-      } catch (error) {
+      } catch  {
         await page.close().catch(() => {});
       }
     } else {
@@ -381,7 +381,7 @@ async function generatePagePdf(
               localStorage.clear();
               sessionStorage.clear();
               if (window.gc) window.gc();
-            } catch (e) {}
+            } catch {}
           }).catch(() => {});
         }
         
@@ -746,7 +746,7 @@ async function processSuccessorWithOrder(
  * NUEVA FUNCIÓN: Genera un PDF completo para el área especificada 
  * (Reemplaza la función GET de agenda-pdf.ts)
  */
-export async function generateAgendaPdf(
+async function generateAgendaPdf(
   area: AreaType,
   baseUrlOverride?: string, // Opcional para permitir sobreescribir la URL base
   skipInitialPages: boolean = false // Nuevo parámetro para evitar duplicación
@@ -1094,7 +1094,7 @@ export async function GET(request: NextRequest) {
           const successionsData = matrixData.data;
           
           // URLs para potenciales sucesores (dos URLs por cada sucesor: app y ficha-talento)
-          const successorUrls = successionsData.potentialSuccessors.flatMap((successor, succIdx) => [
+          const successorUrls = successionsData.potentialSuccessors.flatMap((successor) => [
             // URL para potential-successor-app
             {
               type: 'potential-successor-app',
@@ -1110,7 +1110,7 @@ export async function GET(request: NextRequest) {
           ]);
           
           // URLs para puestos donde el empleado podría ser sucesor (solo una URL de tipo app)
-          const successorForUrls = successionsData.potentialSuccessorFor.map((position, posIdx) => ({
+          const successorForUrls = successionsData.potentialSuccessorFor.map((position) => ({
             type: 'potential-successor-for-app',
             url: `${baseUrl}/${userId}/app?userName=${encodeURIComponent(userName)}&userId=${userId}&positionId=${position.ouIdPuestoEmployee}&isPDF=true`,
             description: `Sucesor para: ${position.positionName} (${position.term})`

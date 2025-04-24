@@ -61,11 +61,6 @@ interface Employee {
   vacantFlag: boolean;
 }
 
-interface DirectoresResponse {
-  employees: Employee[];
-  manager?: Employee;
-}
-
 interface Successor {
   userIdSuccessor: number | string;
   userNameSuccessor: string;
@@ -74,17 +69,6 @@ interface Successor {
   fullName: string;
   app: string;
   idPuesto: string;
-}
-
-interface SuccessorsResponse {
-  data: {
-    user: {
-      userId: number;
-      userName: string;
-      idPuesto: string;
-    };
-    potentialSuccessors: Successor[];
-  };
 }
 
 // Estructura para mantener el orden de las páginas
@@ -196,13 +180,13 @@ class PagePool {
             window.stop();
             // Limpiar memoria
             if (window.gc) window.gc();
-          } catch (e) {
+          } catch {
             // Ignorar errores
           }
         }).catch(() => {});
         
         this.availablePages.push(page);
-      } catch (error) {
+      } catch  {
         await page.close().catch(() => {});
       }
     } else {
@@ -732,7 +716,7 @@ async function generatePagePdf(
               localStorage.clear();
               sessionStorage.clear();
               if (window.gc) window.gc();
-            } catch (e) {}
+            } catch {}
           }).catch(() => {});
         }
         

@@ -20,7 +20,9 @@ const Comentarios = () => {
 
   useEffect(() => {
     const updateDataFromStorage = async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let hoganDataFromStorage: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let mgtDataFromStorage: any;
       if (isPDF) {
         const queryParams = new URLSearchParams({
