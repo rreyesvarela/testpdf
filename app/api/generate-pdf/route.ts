@@ -1040,7 +1040,7 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const queryParams = url.searchParams;
   const area = queryParams.get('area') as AreaType;
-  const includeAgenda = queryParams.get('includeAgenda') !== 'false'; // Por defecto incluir agenda
+  const includeAgenda = false; // Por defecto incluir agenda
 
   if (!area || !routeToParam[area]) {
     return new Response(
@@ -1088,73 +1088,73 @@ export async function GET(request: NextRequest) {
           url: `${baseUrl}/${userId}/fichaTalento?${commonParams}`,
           description: 'Ficha de Talento'
         },
-        {
-          type: 'comentarios',
-          url: `${baseUrl}/${userId}/fichaTalento/comentarios?${commonParams}`,
-          description: 'Comentarios'
-        },
-        {
-          type: 'matriz-de-sucesion',
-          url: `${baseUrl}/${userId}/matriz-de-sucesion?${commonParams}`,
-          description: 'Matriz de Sucesión'
-        },
-        {
-          type: 'app',
-          url: `${baseUrl}/${userId}/app?${commonParams}`,
-          description: 'APP'
-        },
-        {
-          type: 'pdi',
-          url: `${baseUrl}/${userId}/pdi?${commonParams}`,
-          description: 'PDI'
-        }
+        // {
+        //   type: 'comentarios',
+        //   url: `${baseUrl}/${userId}/fichaTalento/comentarios?${commonParams}`,
+        //   description: 'Comentarios'
+        // },
+        // {
+        //   type: 'matriz-de-sucesion',
+        //   url: `${baseUrl}/${userId}/matriz-de-sucesion?${commonParams}`,
+        //   description: 'Matriz de Sucesión'
+        // },
+        // {
+        //   type: 'app',
+        //   url: `${baseUrl}/${userId}/app?${commonParams}`,
+        //   description: 'APP'
+        // },
+        // {
+        //   type: 'pdi',
+        //   url: `${baseUrl}/${userId}/pdi?${commonParams}`,
+        //   description: 'PDI'
+        // }
       ];
 
       // Obtener datos de matriz de sucesión
-      try {
-        console.log(`Obteniendo datos de matriz de sucesión para ${userName}`);
-        const matrixResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/matrixSuccession?userId=${userId}&userName=${encodeURIComponent(userName)}`);
+      // try {
+      //   console.log(`Obteniendo datos de matriz de sucesión para ${userName}`);
+      //   const matrixResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/matrixSuccession?userId=${userId}&userName=${encodeURIComponent(userName)}`);
 
-        if (matrixResponse.ok) {
-          const matrixData: { data: ResponseDataMatrixSuccession } = await matrixResponse.json();
-          const successionsData = matrixData.data;
+      //   if (matrixResponse.ok) {
+      //     const matrixData: { data: ResponseDataMatrixSuccession } = await matrixResponse.json();
+      //     const successionsData = matrixData.data;
 
-          // URLs para potenciales sucesores (dos URLs por cada sucesor: app y ficha-talento)
-          const successorUrls = successionsData.potentialSuccessors.flatMap((successor) => [
-            // URL para potential-successor-app
-            {
-              type: 'potential-successor-app',
-              url: `${baseUrl}/${userId}/app?userName=${encodeURIComponent(successor.userNameSuccessor)}&userId=${successor.userIdSuccessor}&positionId=${positionId}&isPDF=true&name=${encodeURIComponent(successor.fullName)}`,
-              description: `Sucesor App: ${successor.fullName || successor.userNameSuccessor} (${successor.term})`
-            },
-            // URL para potential-successor-ficha-talento
-            {
-              type: 'potential-successor-ficha-talento',
-              url: `${baseUrl}/${userId}/fichaTalento?userName=${encodeURIComponent(successor.userNameSuccessor)}&userId=${successor.userIdSuccessor}&positionId=${positionId}&isPDF=true&name=${encodeURIComponent(successor.fullName)}`,
-              description: `Sucesor Ficha: ${successor.fullName || successor.userNameSuccessor} (${successor.term})`
-            }
-          ]);
+      //     // URLs para potenciales sucesores (dos URLs por cada sucesor: app y ficha-talento)
+      //     const successorUrls = successionsData.potentialSuccessors.flatMap((successor) => [
+      //       // URL para potential-successor-app
+      //       {
+      //         type: 'potential-successor-app',
+      //         url: `${baseUrl}/${userId}/app?userName=${encodeURIComponent(successor.userNameSuccessor)}&userId=${successor.userIdSuccessor}&positionId=${positionId}&isPDF=true&name=${encodeURIComponent(successor.fullName)}`,
+      //         description: `Sucesor App: ${successor.fullName || successor.userNameSuccessor} (${successor.term})`
+      //       },
+      //       // URL para potential-successor-ficha-talento
+      //       {
+      //         type: 'potential-successor-ficha-talento',
+      //         url: `${baseUrl}/${userId}/fichaTalento?userName=${encodeURIComponent(successor.userNameSuccessor)}&userId=${successor.userIdSuccessor}&positionId=${positionId}&isPDF=true&name=${encodeURIComponent(successor.fullName)}`,
+      //         description: `Sucesor Ficha: ${successor.fullName || successor.userNameSuccessor} (${successor.term})`
+      //       }
+      //     ]);
 
-          // URLs para puestos donde el empleado podría ser sucesor (solo una URL de tipo app)
-          const successorForUrls = successionsData.potentialSuccessorFor.map((position) => ({
-            type: 'potential-successor-for-app',
-            url: `${baseUrl}/${userId}/app?userName=${encodeURIComponent(userName)}&userId=${userId}&positionId=${position.ouIdPuestoEmployee}&isPDF=true`,
-            description: `Sucesor para: ${position.positionName} (${position.term})`
-          }));
+      //     // URLs para puestos donde el empleado podría ser sucesor (solo una URL de tipo app)
+      //     const successorForUrls = successionsData.potentialSuccessorFor.map((position) => ({
+      //       type: 'potential-successor-for-app',
+      //       url: `${baseUrl}/${userId}/app?userName=${encodeURIComponent(userName)}&userId=${userId}&positionId=${position.ouIdPuestoEmployee}&isPDF=true`,
+      //       description: `Sucesor para: ${position.positionName} (${position.term})`
+      //     }));
 
-          // Combinar todas las URLs
-          return {
-            employeeId: userId,
-            employeeName: userName,
-            employeeIndex: index,
-            urls: [...baseUrls, ...successorUrls, ...successorForUrls]
-          };
-        } else {
-          console.warn(`No se pudieron obtener datos de matriz de sucesión para ${userName}: ${matrixResponse.status} ${matrixResponse.statusText}`);
-        }
-      } catch (error) {
-        console.error(`Error obteniendo datos de matriz de sucesión para ${userName}:`, error);
-      }
+      //     // Combinar todas las URLs
+      //     return {
+      //       employeeId: userId,
+      //       employeeName: userName,
+      //       employeeIndex: index,
+      //       urls: [...baseUrls, ...successorUrls, ...successorForUrls]
+      //     };
+      //   } else {
+      //     console.warn(`No se pudieron obtener datos de matriz de sucesión para ${userName}: ${matrixResponse.status} ${matrixResponse.statusText}`);
+      //   }
+      // } catch (error) {
+      //   console.error(`Error obteniendo datos de matriz de sucesión para ${userName}:`, error);
+      // }
 
       // Si hay error, solo devolver las URLs base
       return {
@@ -1166,7 +1166,7 @@ export async function GET(request: NextRequest) {
     });
 
     // Esperar a que se resuelvan todas las promesas de los pares de empleados
-    const employeePairs = await Promise.all(employeePairsPromises);
+    const employeePairs = await Promise.all([employeePairsPromises[0]]);
 
     console.log(`[${new Date().toISOString()}] Total de empleados a procesar: ${employeePairs.length}`);
     console.log(`[${new Date().toISOString()}] Total de URLs a procesar: ${employeePairs.reduce((sum, emp) => sum + emp.urls.length, 0)}`);
