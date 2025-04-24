@@ -781,9 +781,6 @@ async function generateAgendaPdf(
     // Iniciar navegador
     console.time('Browser Start');
     browser = await puppeteer.launch({
-      executablePath: process.env.NODE_ENV === 'production'
-    ? '/usr/bin/google-chrome'
-    : puppeteer.executablePath(),
       headless: true,
       args: PUPPETEER_ARGS,
       defaultViewport: {
