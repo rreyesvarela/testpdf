@@ -1,7 +1,7 @@
 // The following code represents the refactored solution to integrate 
 // the agenda-pdf functionality into generate-pdf
 
-import puppeteer, { Browser, Page } from 'puppeteer';
+import chromium from '@sparticuz/chrome-aws-lambda';
 import { PDFDocument } from 'pdf-lib';
 import { NextRequest } from 'next/server';
 import { ApiResponse } from '@/app/[id]/organigrama/OrganigramaApiData';
@@ -159,8 +159,8 @@ const PUPPETEER_ARGS = [
 
 // Pool de páginas mejorado - from agenda-pdf.ts
 class PagePool {
-  private browser: Browser;
-  private availablePages: Page[] = [];
+  private browser;
+  private availablePages: any[] = [];
   private maxSize: number;
   private blockedResources: string[] = [
     'google-analytics', 'analytics', 'googletagmanager',
@@ -168,12 +168,12 @@ class PagePool {
     'advertisement', 'ads', 'doubleclick'
   ];
 
-  constructor(browser: Browser, maxSize: number = 10) {
+  constructor(browser: any, maxSize: number = 10) {
     this.browser = browser;
     this.maxSize = maxSize;
   }
 
-  async getPage(): Promise<Page> {
+  async getPage(): Promise<any> {
     if (this.availablePages.length > 0) {
       return this.availablePages.pop()!;
     } else {
@@ -182,7 +182,7 @@ class PagePool {
       
       // Bloquear recursos no esenciales
       await page.setRequestInterception(true);
-      page.on('request', (req) => {
+      page.on('request', (req: any) => {
         const url = req.url().toLowerCase();
         const resourceType = req.resourceType();
         
@@ -208,7 +208,7 @@ class PagePool {
     }
   }
 
-  async releasePage(page: Page): Promise<void> {
+  async releasePage(page: any): Promise<void> {
     if (this.availablePages.length < this.maxSize) {
       try {
         await page.evaluate(() => {
@@ -767,7 +767,7 @@ async function generateAgendaPdf(
   }
   
   const baseUrl = baseUrlOverride || `${process.env.NEXT_PUBLIC_BASE_URL}/${routeToParam[area]}`;
-  let browser: Browser | null = null;
+  let browser: any = null;
   let pagePool: PagePool | null = null;
   const pdfCache = new PdfCache();
   
@@ -779,16 +779,40 @@ async function generateAgendaPdf(
     console.time('Total Process');
     
     // Iniciar navegador
-    console.time('Browser Start');
-    browser = await puppeteer.launch({
-      headless: true,
-      args: PUPPETEER_ARGS,
-      defaultViewport: {
-        width: 2400,
-        height: 1080,
-        deviceScaleFactor: 1,
-      },
-    });
+
+    if (process.env.NODE_ENV === 'production') {
+      const puppeteerCore = await import('puppeteer-core');
+      const chromium = await import('@sparticuz/chrome-aws-lambda');
+
+      browser = await puppeteerCore.default.launch({
+        args: chromium.default.args,
+        executablePath: await chromium.default.executablePath,
+        headless: true,
+        defaultViewport: {
+          width: 2400,
+          height: 1080,
+          deviceScaleFactor: 1,
+        },
+      });
+    } else {
+      const puppeteerDev = await import('puppeteer');
+
+      browser = await puppeteerDev.launch({
+        executablePath: 
+        process.platform === 'win32'
+          ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+          : process.platform === 'darwin'
+          ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+          : '/usr/bin/google-chrome',
+        headless: true,
+        args: PUPPETEER_ARGS,
+        defaultViewport: {
+          width: 2400,
+          height: 1080,
+          deviceScaleFactor: 1,
+        },
+      });
+    }
     console.timeEnd('Browser Start');
     
     // Crear pool de páginas
@@ -1023,7 +1047,7 @@ export async function GET(request: NextRequest) {
     );
   }
   
-  let browser: Browser | null = null;
+  let browser = null;
   let pagePool: PagePool | null = null;
   
   try {
@@ -1147,15 +1171,41 @@ export async function GET(request: NextRequest) {
     console.time('PDF Generation Time');
 
     // Iniciar navegador con configuración optimizada
-    browser = await puppeteer.launch({
-      headless: true,
-      args: PUPPETEER_ARGS,
-      defaultViewport: {
-        width: 2200, // Ancho aumentado para mejor visualización
-        height: 1080,
-        deviceScaleFactor: 1, // Asegura una resolución nítida
-      },
-    });
+    if (process.env.NODE_ENV === 'production') {
+      const puppeteerCore = await import('puppeteer-core');
+      const chromium = await import('@sparticuz/chrome-aws-lambda');
+
+      browser = await puppeteerCore.default.launch({
+        args: chromium.default.args,
+        executablePath: await chromium.default.executablePath,
+        headless: true,
+        defaultViewport: {
+          width: 2400,
+          height: 1080,
+          deviceScaleFactor: 1,
+        },
+      });
+    }
+    else {
+      const puppeteerDev = await import('puppeteer');
+      browser = await puppeteerDev.default.launch({
+        executablePath: 
+        process.platform === 'win32'
+          ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+          : process.platform === 'darwin'
+          ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+          : '/usr/bin/google-chrome',
+        headless: true,
+        args: PUPPETEER_ARGS,
+        defaultViewport: {
+          width: 2400,
+          height: 1080,
+          deviceScaleFactor: 1,
+        },
+      });
+    }
+    console.timeEnd('Browser Start');
+
     
     // Crear pool de páginas
     pagePool = new PagePool(browser, CONCURRENCY_LIMIT * 2);
@@ -1410,7 +1460,7 @@ export async function GET(request: NextRequest) {
     }
     
     if (browser) {
-      await browser.close().catch(() => {});
+      await (browser).close().catch(() => {});
       console.log(`[${new Date().toISOString()}] Navegador cerrado correctamente`);
     }
   }
