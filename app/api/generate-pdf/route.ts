@@ -1305,13 +1305,13 @@ export async function GET(request: NextRequest) {
     // Definir las páginas iniciales requeridas en el orden exacto que deben aparecer
     const initialPages = [
       { url: `${process.env.NEXT_PUBLIC_BASE_URL}/${routeToParam[area]}?isPDF=true`, name: "Página Inicial", description: "Página principal" },
-      { url: `${process.env.NEXT_PUBLIC_BASE_URL}/${routeToParam[area]}/agenda?isPDF=true&talento=true`, name: "Página de Agenda (Inicial)", description: "Agenda inicial" },
-      { url: `${process.env.NEXT_PUBLIC_BASE_URL}/${routeToParam[area]}/temas?organigrama=true`, name: "Página de Temas (Inicial)", description: "Temas iniciales" },
-      {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/${routeToParam[area]}/organigrama?bloque=1&isPDF=true&area=${routeToParam[area]}`,
-        name: "Página de Organigrama",
-        description: "Organigrama"
-      }
+      // { url: `${process.env.NEXT_PUBLIC_BASE_URL}/${routeToParam[area]}/agenda?isPDF=true&talento=true`, name: "Página de Agenda (Inicial)", description: "Agenda inicial" },
+      // { url: `${process.env.NEXT_PUBLIC_BASE_URL}/${routeToParam[area]}/temas?organigrama=true`, name: "Página de Temas (Inicial)", description: "Temas iniciales" },
+      // {
+      //   url: `${process.env.NEXT_PUBLIC_BASE_URL}/${routeToParam[area]}/organigrama?bloque=1&isPDF=true&area=${routeToParam[area]}`,
+      //   name: "Página de Organigrama",
+      //   description: "Organigrama"
+      // }
     ];
 
     // Generamos todas las páginas iniciales y las almacenamos temporalmente
